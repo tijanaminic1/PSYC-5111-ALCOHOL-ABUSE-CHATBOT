@@ -8,29 +8,29 @@ BG_GRAY = "#9DD3D7"
 BG_COLOR = "#DCE2F8"
 TEXT_COLOR = "#000000"
 
-FONT = "Helvetica 17"
-FONT_BOLD = "Helvetica 17 bold"
+FONT = ("Comic Sans MS", 16) 
+FONT_BOLD = ("Comic Sans MS", 16, "bold") 
 
 # Global variables
 questions = [
-    "Hi! Welcome to the alcohol abuse questionnaire! How old are you? (Enter a number)",
-    "How many drinks do you usually have in a given week? (Enter a number)",
-    "At what age did you first begin drinking? (Enter a number or NA)",
+    "Hi! Welcome to the alcohol abuse questionnaire! \n How old are you? (Enter a number)",
+    "How many drinks do you usually have in a \n given week? (Enter a number)",
+    "At what age did you first begin drinking? \n (Enter a number or NA)",
     "Does your family have a history of alcohol abuse? (yes/no)",
-    "How involved are you in campus activities on a scale of 1-10? (Enter a number)",
-    "How often do you experience hangovers on a scale of 1-10? (Enter a number)",
-    "Everyone in college is drinking. Please reply how strongly you agree with the statement on a scale from 1-5",
-    "I try to limit the amount of drink I have in a day. Please reply how strongly you agree with the statement on a scale from 1-5",
-    "If I need help I am comfortable reaching out to someone at CAPS. Please reply how strongly you agree with the statement on a scale from 1-5",
+    "How involved are you in campus activities \n on a scale of 1-10? (Enter a number)",
+    "How often do you experience hangovers on a \n scale of 1-10? (Enter a number)",
+    "Everyone in college is drinking. Please reply \n how strongly you agree with the statement on a scale from 1-5",
+    "I try to limit the amount of drink I have in a day. \n Please reply how strongly you agree with the statement on a scale from 1-5",
+    "If I need help I am comfortable reaching out to someone at CAPS. \n Please reply how strongly you agree with the statement on a scale from 1-5",
     "Do you engage in pregaming? (yes/no)",
     "Do you participate in Greek life? (yes/no)",
     "Do you live on campus?(yes/no)",
-    "I am comfortable reaching out to my RA for guidance/help. Please reply how strongly you agree with the statement on a scale from 1-5",
-    "Please reply to the following statement with yes/no: When I go to parties that involve drinking, I make sure to bring friends that I trust will take care of me",
-    "Please reply to the following statement with yes/no: I only go to frat parties that I heard from friends were safe and have a good risk-prevention team",
-    "Please reply to the following statement with yes/no: When I go to parties that involve drinking, I make sure to have a ride home from a sober friend/person.",
-    "Please reply to the following statement with yes/no: At parties, I never leave my drink unattended.",
-    "Please reply to the following statement with yes/no: I usually avoid mixing my drinks"
+    "I am comfortable reaching out to my RA for guidance/help. \n Please reply how strongly you agree with the statement on a scale from 1-5",
+    "Please reply to the following statement with yes/no:\n When I go to parties that involve drinking, I make sure to bring friends that I trust will take care of me",
+    "Please reply to the following statement with yes/no: \nI only go to frat parties that I heard from friends were safe and have a good risk-prevention team",
+    "Please reply to the following statement with yes/no:\n When I go to parties that involve drinking, I make sure to have a ride home from a sober friend/person.",
+    "Please reply to the following statement with yes/no:\n At parties, I never leave my drink unattended.",
+    "Please reply to the following statement with yes/no: \nI usually avoid mixing my drinks"
 ]
 current_question = 0
 points = 0
@@ -44,6 +44,7 @@ def send():
     send = "You -> " + user_input
     txt.insert(END, "\n" + send)
 
+
     if current_question == 0:
         try:
             age = int(user_input)
@@ -53,6 +54,7 @@ def send():
                 points -= 10  # Deduct points for being under 18
         except ValueError:
             txt.insert(END, "\n" + "Sippy -> Please enter a valid age.")
+            current_question -= 1
 
     elif current_question == 1:
         try:
@@ -65,6 +67,7 @@ def send():
                 points += 20
         except ValueError:
             txt.insert(END, "\n" + "Sippy -> Please enter a valid number.")
+            current_question -= 1
 
     elif current_question == 2:
         if user_input.lower() == "na":
@@ -78,6 +81,7 @@ def send():
                     points += 5
             except ValueError:
                 txt.insert(END, "\n" + "Sippy -> Please enter a valid age or NA.")
+                current_question -= 1
 
     elif current_question == 3:
         if user_input.lower() == "yes":
@@ -86,6 +90,7 @@ def send():
             pass  # No points for no family history
         else:
             txt.insert(END, "\n" + "Sippy -> Please enter either 'yes' or 'no'.")
+            current_question -= 1
 
     elif current_question == 4:
         try:
@@ -98,6 +103,7 @@ def send():
                 points += 5
         except ValueError:
             txt.insert(END, "\n" + "Sippy -> Please enter a valid number.")
+            current_question -= 1
 
     elif current_question == 5:
         try:
@@ -110,6 +116,7 @@ def send():
                 points += 10
         except ValueError:
             txt.insert(END, "\n" + "Sippy -> Please enter a valid number.")
+            current_question -= 1
             
     elif current_question == 6:
         try:
@@ -126,6 +133,7 @@ def send():
                 points += 10
         except ValueError:
             txt.insert(END, "\n" + "Sippy -> Please enter a valid number.")
+            current_question -= 1
             
     elif current_question == 7:
         try:
@@ -142,6 +150,7 @@ def send():
                 points -= 10
         except ValueError:
             txt.insert(END, "\n" + "Sippy -> Please enter a valid number.")
+            current_question -= 1
             
     elif current_question == 8:
         try:
@@ -158,6 +167,7 @@ def send():
                 points -= 10
         except ValueError:
             txt.insert(END, "\n" + "Sippy -> Please enter a valid number.")
+            current_question -= 1
             
     elif current_question == 9:
         if user_input.lower() == "yes":
@@ -166,6 +176,7 @@ def send():
             points -= 10
         else:
             txt.insert(END, "\n" + "Sippy -> Please enter either 'yes' or 'no'.")
+            current_question -= 1
             
     elif current_question == 10:
         if user_input.lower() == "yes":
@@ -174,6 +185,7 @@ def send():
             points -= 10
         else:
             txt.insert(END, "\n" + "Sippy -> Please enter either 'yes' or 'no'.")
+            current_question -= 1
             
     elif current_question == 11:
         if user_input.lower() == "yes":
@@ -182,6 +194,7 @@ def send():
             pass
         else:
             txt.insert(END, "\n" + "Sippy -> Please enter either 'yes' or 'no'.")
+            current_question -= 1
             
     elif current_question == 12:
         if user_input.lower() == "yes":
@@ -190,6 +203,7 @@ def send():
             points -= 5
         else:
             txt.insert(END, "\n" + "Sippy -> Please enter either 'yes' or 'no'.")
+            current_question -= 1
             
     elif current_question == 13:
         if user_input.lower() == "yes":
@@ -198,6 +212,7 @@ def send():
             points -= 5
         else:
             txt.insert(END, "\n" + "Sippy -> Please enter either 'yes' or 'no'.")
+            current_question -= 1
             
     elif current_question == 14:
         if user_input.lower() == "yes":
@@ -206,6 +221,7 @@ def send():
             points -= 5
         else:
             txt.insert(END, "\n" + "Sippy -> Please enter either 'yes' or 'no'.")
+            current_question -= 1
             
     elif current_question == 15:
         if user_input.lower() == "yes":
@@ -214,6 +230,7 @@ def send():
             points -= 5
         else:
             txt.insert(END, "\n" + "Sippy -> Please enter either 'yes' or 'no'.")
+            current_question -= 1
             
     elif current_question == 16:
         if user_input.lower() == "yes":
@@ -222,6 +239,7 @@ def send():
             points -= 5
         else:
             txt.insert(END, "\n" + "Sippy -> Please enter either 'yes' or 'no'.")
+            current_question -= 1
 
     current_question += 1
     if current_question < len(questions):
@@ -245,7 +263,7 @@ scrollbar = Scrollbar(root, command=txt.yview)
 scrollbar.grid(row=1, column=2, sticky='nsew')
 txt.config(yscrollcommand=scrollbar.set)
 
-e = Entry(root, bg="#FFFFFF", fg=TEXT_COLOR, font=FONT, width=55)
+e = Entry(root, bg="#FFFFFF", fg=TEXT_COLOR, font=FONT, width=50)
 e.grid(row=2, column=0)
 
 
@@ -253,5 +271,11 @@ send = Button(root, text="Send", font=FONT_BOLD, bg=BG_GRAY,
               command=send).grid(row=2, column=1)
 
 txt.insert(END, "Sippy -> " + questions[current_question])
+
+# Load the logo image
+logo_image = PhotoImage(file="/Users/tijanaminic/Documents/School/Spring 2024/Psych Seminar/Sippy2.png")
+logo_label = Label(root, image=logo_image, bg=BG_COLOR)
+logo_label.grid(row=0, column=0, columnspan=2)
+
 
 root.mainloop()
