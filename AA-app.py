@@ -5,7 +5,7 @@ root = Tk()
 root.title("Alcohol Abuse Assistant")
 
 BG_GRAY = "#9DD3D7"
-BG_COLOR = "#DCE2F8"
+BG_COLOR = "#FFC0CB"
 TEXT_COLOR = "#000000"
 
 FONT = ("Comic Sans MS", 16) 
@@ -25,7 +25,7 @@ questions = [
     "Do you engage in pregaming? (yes/no)",
     "Do you participate in Greek life? (yes/no)",
     "Do you live on campus?(yes/no)",
-    "I am comfortable reaching out to my RA for guidance/help. \n Please reply how strongly you agree with the statement on a scale from 1-5",
+    "Please reply to the following statement with yes/no:\n I am comfortable reaching out to my RA for guidance/help.",
     "Please reply to the following statement with yes/no:\n When I go to parties that involve drinking, I make sure to bring friends that I trust will take care of me",
     "Please reply to the following statement with yes/no: \nI only go to frat parties that I heard from friends were safe and have a good risk-prevention team",
     "Please reply to the following statement with yes/no:\n When I go to parties that involve drinking, I make sure to have a ride home from a sober friend/person.",
