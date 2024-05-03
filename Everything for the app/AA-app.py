@@ -371,7 +371,7 @@ decrease_font_button.grid(row=3, column=5)
 txt.insert(tk.END, "Sippy -> " + questions[current_question])
 
 # Load the logo image
-logo_image = tk.PhotoImage(file="/Users/tijanaminic/Documents/GitHub/PSYC-5111-ALCOHOL-ABUSE-CHATBOT/Everything for the app/Sippy6.png")
+logo_image = tk.PhotoImage(file="/Users/tijanaminic/Documents/School/Spring 2024/Psych Seminar/Sippy6.png")
 logo_label = tk.Label(root, image=logo_image, bg="#FFFFFF")
 logo_label.grid(row=0, column=0, columnspan=6)
 
